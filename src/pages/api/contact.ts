@@ -44,22 +44,6 @@ export const POST: APIRoute = async ({ request }) => {
 	try {
 		await db
 			.prepare(
-				`CREATE TABLE IF NOT EXISTS contact_submissions (
-					id TEXT PRIMARY KEY,
-					name TEXT NOT NULL,
-					email TEXT NOT NULL,
-					company TEXT,
-					message TEXT NOT NULL,
-					source TEXT,
-					user_agent TEXT,
-					status TEXT NOT NULL DEFAULT 'new',
-					created_at TEXT NOT NULL
-				)`,
-			)
-			.run();
-
-		await db
-			.prepare(
 				`INSERT INTO contact_submissions (
 					id,
 					name,

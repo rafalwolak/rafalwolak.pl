@@ -42,6 +42,7 @@ The EmDash admin UI is available at `/_emdash/admin`.
 Contact form submissions are stored in the `contact_submissions` D1 table.
 
 ```bash
+pnpm exec wrangler d1 migrations apply rafalwolak-pl --local
 pnpm exec wrangler d1 execute rafalwolak-pl --local --command "SELECT name,email,company,status,created_at FROM contact_submissions ORDER BY created_at DESC LIMIT 20"
 ```
 
@@ -52,3 +53,8 @@ pnpm deploy
 ```
 
 Before deploying, create the D1 database and R2 bucket named in `wrangler.jsonc`, then set the production `EMDASH_ENCRYPTION_KEY` secret.
+Apply D1 migrations before sending real contact traffic to production.
+
+```bash
+pnpm exec wrangler d1 migrations apply rafalwolak-pl --remote
+```

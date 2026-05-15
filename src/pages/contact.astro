@@ -1,37 +1,5 @@
 ---
 import Base from "../layouts/Base.astro";
-
-// Handle form submission
-let formStatus: "idle" | "success" | "error" = "idle";
-let formMessage = "";
-
-if (Astro.request.method === "POST") {
-	try {
-		const formData = await Astro.request.formData();
-		const name = formData.get("name")?.toString() || "";
-		const email = formData.get("email")?.toString() || "";
-		const message = formData.get("message")?.toString() || "";
-
-		// Basic validation
-		if (!name || !email || !message) {
-			formStatus = "error";
-			formMessage = "Please fill in all fields.";
-		} else if (!email.includes("@")) {
-			formStatus = "error";
-			formMessage = "Please enter a valid email address.";
-		} else {
-			// In a real implementation, you would send this to an email service,
-			// save to database, or forward to a webhook.
-			// For this template, we just show a success message.
-			console.log("Contact form submission:", { name, email, message });
-			formStatus = "success";
-			formMessage = "Thanks for reaching out. I will get back to you soon.";
-		}
-	} catch {
-		formStatus = "error";
-		formMessage = "Something went wrong. Please try again.";
-	}
-}
 ---
 
 <Base title="Contact" description="Contact Rafal Wolak about frontend and commerce projects.">
@@ -46,87 +14,132 @@ if (Astro.request.method === "POST") {
 
 		<div class="contact-grid">
 			<div class="contact-form-wrapper">
-				{formStatus === "success" ? (
-					<div class="form-success">
-						<h2>Message Sent</h2>
-						<p>{formMessage}</p>
-						<a href="/contact" class="form-reset">Send another message</a>
+				<div class="form-success" data-contact-success hidden>
+					<h2>Message Sent</h2>
+					<p>Thanks for reaching out. I will get back to you soon.</p>
+					<button class="form-reset" type="button" data-contact-reset>Send another message</button>
+				</div>
+
+				<form action="/api/contact" method="POST" class="contact-form" data-contact-form>
+					<div class="form-error" data-contact-error hidden>
+						<p>Something went wrong. Please try again.</p>
 					</div>
-				) : (
-					<form method="POST" class="contact-form">
-						{formStatus === "error" && (
-							<div class="form-error">
-								<p>{formMessage}</p>
-							</div>
-						)}
 
-						<div class="form-field">
-							<label for="name">Name</label>
-							<input
-								type="text"
-								id="name"
-								name="name"
-								required
-								placeholder="Your name"
-								autocomplete="name"
-							/>
-						</div>
+					<input type="hidden" name="source" value="/contact" />
+					<input type="text" name="website" tabindex="-1" autocomplete="off" hidden />
 
-						<div class="form-field">
-							<label for="email">Email</label>
-							<input
-								type="email"
-								id="email"
-								name="email"
-								required
-								placeholder="you@example.com"
-								autocomplete="email"
-							/>
-						</div>
+					<div class="form-field">
+						<label for="name">Name</label>
+						<input
+							type="text"
+							id="name"
+							name="name"
+							required
+							placeholder="Your name"
+							autocomplete="name"
+						/>
+					</div>
 
-						<div class="form-field">
-							<label for="message">Message</label>
-							<textarea
-								id="message"
-								name="message"
-								required
-								rows="6"
-								placeholder="Tell us about your project..."
-							></textarea>
-						</div>
+					<div class="form-field">
+						<label for="email">Email</label>
+						<input
+							type="email"
+							id="email"
+							name="email"
+							required
+							placeholder="you@example.com"
+							autocomplete="email"
+						/>
+					</div>
 
-						<button type="submit" class="form-submit">
-							Send Message
-						</button>
-					</form>
-				)}
+					<div class="form-field">
+						<label for="company">Company / project</label>
+						<input
+							type="text"
+							id="company"
+							name="company"
+							placeholder="Project or company name"
+							autocomplete="organization"
+						/>
+					</div>
+
+					<div class="form-field">
+						<label for="message">Message</label>
+						<textarea
+							id="message"
+							name="message"
+							required
+							rows="6"
+							placeholder="Tell me about your project..."
+						></textarea>
+					</div>
+
+					<button type="submit" class="form-submit">
+						Send Message
+					</button>
+				</form>
 			</div>
 
 			<aside class="contact-info">
 				<div class="info-section">
 					<h3>Email</h3>
 					<p>
-						<a href="mailto:hello@studio.example">hello@studio.example</a>
+						<a href="mailto:kontakt@rafalwolak.pl">kontakt@rafalwolak.pl</a>
 					</p>
 				</div>
 
 				<div class="info-section">
 					<h3>Location</h3>
-					<p>San Francisco, CA</p>
+					<p>Katowice, Poland / remote</p>
 				</div>
 
 				<div class="info-section">
 					<h3>Social</h3>
 					<ul class="social-links">
-						<li><a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a></li>
-						<li><a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a></li>
-						<li><a href="https://dribbble.com" target="_blank" rel="noopener noreferrer">Dribbble</a></li>
-						<li><a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+						<li><a href="https://www.linkedin.com/in/rafalwolak" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+						<li><a href="https://github.com/rafalwolak" target="_blank" rel="noopener noreferrer">GitHub</a></li>
 					</ul>
 				</div>
 			</aside>
 		</div>
 	</div>
+
+	<script>
+		const form = document.querySelector("[data-contact-form]") as HTMLFormElement | null;
+		const success = document.querySelector("[data-contact-success]");
+		const error = document.querySelector("[data-contact-error]");
+		const reset = document.querySelector("[data-contact-reset]");
+
+		form?.addEventListener("submit", async (event) => {
+			event.preventDefault();
+			error?.setAttribute("hidden", "");
+
+			const response = await fetch("/api/contact", {
+				method: "POST",
+				body: new FormData(form),
+			}).catch(() => null);
+			const data = response
+				? ((await response.json().catch(() => null)) as { ok?: boolean; message?: string } | null)
+				: null;
+
+			if (response?.ok && data?.ok) {
+				form.setAttribute("hidden", "");
+				success?.removeAttribute("hidden");
+				form.reset();
+				return;
+			}
+
+			error?.querySelector("p")?.replaceChildren(
+				data?.message || "Something went wrong. Please try again.",
+			);
+			error?.removeAttribute("hidden");
+		});
+
+		reset?.addEventListener("click", () => {
+			success?.setAttribute("hidden", "");
+			form?.removeAttribute("hidden");
+		});
+	</script>
 </Base>
 
 <style>

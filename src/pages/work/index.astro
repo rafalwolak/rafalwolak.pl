@@ -108,8 +108,12 @@ const projectsWithTags = sortedProjects.map((project) => ({
 						<h2>Example projects</h2>
 						<p>CMS content is empty, so this page is showing profile-based examples.</p>
 						<div class="fallback-projects">
-							{profileProjects.map((project) => (
-								<a href={project.url || "/work"} target={project.url ? "_blank" : undefined} rel={project.url ? "noreferrer" : undefined}>
+								{profileProjects.map((project) => (
+									<a
+										href={project.url || "/work"}
+										target={project.url ? "_blank" : undefined}
+										rel={project.url ? "noopener noreferrer" : undefined}
+									>
 									<span>{project.year}</span>
 									<strong>{project.title}</strong>
 									<small>{project.client}</small>

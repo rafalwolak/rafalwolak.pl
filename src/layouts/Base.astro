@@ -59,7 +59,11 @@ const pageCtx = createPublicPageContext({
 					</a>
 					<nav class="site-shell-nav" aria-label="Site sections">
 						{menu?.items.map((item) => (
-							<a href={item.url} target={item.target}>
+							<a
+								href={item.url}
+								target={item.target}
+								rel={item.target === "_blank" ? "noopener noreferrer" : undefined}
+							>
 								{item.label}
 							</a>
 						))}
