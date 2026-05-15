@@ -51,7 +51,6 @@ const cmsProjects = projects.map((project) => ({
 }));
 const portfolioProjects: PortfolioProject[] =
 	cmsProjects.length > 0 ? cmsProjects : profileProjects;
-const featuredProjects = portfolioProjects.slice(0, 3);
 const currentYear = new Date().getFullYear();
 const projectStats = [
 	{ icon: "⚡", value: "20+", label: "Years programming" },
@@ -222,27 +221,6 @@ const techStack = [
 				</div>
 			</div>
 
-			<aside class="hero-projects" aria-labelledby="selected-work-title">
-				<h2 id="selected-work-title">Selected projects</h2>
-				{
-					featuredProjects.map((project, index) => (
-						<article class="project-link">
-							<span>{String(index + 1).padStart(2, "0")}</span>
-							<a
-								href={project.url || "/work"}
-								target={project.url ? "_blank" : undefined}
-								rel={project.url ? "noopener noreferrer" : undefined}
-							>
-								{project.title}
-							</a>
-							<p>{project.summary}</p>
-						</article>
-					))
-				}
-				<a class="all-projects" href="#work">
-					View recent work <span aria-hidden="true">↗</span>
-				</a>
-			</aside>
 		</section>
 
 		<section class="about-section" id="about" aria-labelledby="about-title">
@@ -556,7 +534,7 @@ const techStack = [
 
 	.hero {
 		display: grid;
-		grid-template-columns: 128px minmax(360px, 0.92fr) minmax(460px, 1fr) minmax(210px, 0.45fr);
+		grid-template-columns: 128px minmax(360px, 0.92fr) minmax(460px, 1.12fr);
 		align-items: center;
 		gap: clamp(28px, 2.8vw, 54px);
 		width: min(1532px, calc(100% - 54px));
@@ -685,7 +663,6 @@ const techStack = [
 
 	.primary-action,
 	.text-action,
-	.all-projects,
 	.contact-email,
 	.contact-form button {
 		display: inline-flex;
@@ -708,14 +685,12 @@ const techStack = [
 	}
 
 	.primary-action span,
-	.all-projects span,
 	.contact-form button span {
 		color: var(--cyan);
 		font-size: 1.2rem;
 	}
 
 	.text-action,
-	.all-projects,
 	.contact-email {
 		padding-bottom: 9px;
 		border-bottom: 2px solid var(--cyan);
@@ -791,77 +766,6 @@ const techStack = [
 		fill: rgba(2, 6, 8, 0.13);
 		mix-blend-mode: multiply;
 		pointer-events: none;
-	}
-
-	.hero-projects {
-		position: relative;
-		z-index: 5;
-		align-self: center;
-		padding-left: clamp(18px, 2.2vw, 34px);
-		border-left: 1px solid rgba(245, 245, 241, 0.18);
-		transform: translateY(clamp(-64px, -5svh, -34px));
-	}
-
-	.hero-projects h2 {
-		display: inline-block;
-		margin: 0 0 30px;
-		padding-bottom: 12px;
-		border-bottom: 1px solid rgba(245, 245, 241, 0.44);
-		color: var(--paper);
-		font-family: var(--font-mono);
-		font-size: 0.76rem;
-		font-weight: 500;
-		letter-spacing: 0.05em;
-		line-height: 1;
-		text-transform: uppercase;
-	}
-
-	.project-link {
-		display: grid;
-		gap: 10px;
-		margin-bottom: clamp(34px, 5vh, 50px);
-		font-family: var(--font-mono);
-	}
-
-	.project-link span {
-		color: var(--coral);
-		font-size: 0.95rem;
-		font-weight: 760;
-		letter-spacing: 0.12em;
-	}
-
-	.project-link:nth-of-type(2) span {
-		color: var(--cyan);
-	}
-
-	.project-link a {
-		width: fit-content;
-		color: var(--paper);
-		font-size: 1.22rem;
-		font-weight: 700;
-		letter-spacing: 0.18em;
-		line-height: 1.18;
-		text-transform: uppercase;
-	}
-
-	.project-link a:hover,
-	.project-link a:focus-visible,
-	.all-projects:hover,
-	.all-projects:focus-visible {
-		color: var(--cyan);
-		outline: 0;
-	}
-
-	.project-link p {
-		max-width: 230px;
-		margin: 0;
-		color: rgba(245, 245, 241, 0.58);
-		font-size: 0.82rem;
-		line-height: 1.48;
-	}
-
-	.all-projects {
-		width: fit-content;
 	}
 
 	.about-section {
@@ -1313,28 +1217,6 @@ const techStack = [
 			grid-template-columns: 92px minmax(340px, 0.98fr) minmax(360px, 0.92fr);
 		}
 
-		.hero-projects {
-			grid-column: 2 / 4;
-			display: grid;
-			grid-template-columns: repeat(3, 1fr);
-			gap: 22px;
-			align-self: start;
-			margin-bottom: 38px;
-			padding: 22px 0 0;
-			border-top: 1px solid var(--line);
-			border-left: 0;
-			transform: none;
-		}
-
-		.hero-projects h2,
-		.all-projects {
-			grid-column: 1 / -1;
-		}
-
-		.project-link {
-			margin-bottom: 0;
-		}
-
 		.about-section {
 			grid-template-columns: 78px minmax(280px, 0.7fr) minmax(300px, 0.8fr);
 		}
@@ -1399,13 +1281,6 @@ const techStack = [
 		.portrait-eye-layer {
 			bottom: -18%;
 			width: min(108vw, 650px);
-		}
-
-		.hero-projects {
-			grid-column: auto;
-			grid-template-columns: 1fr;
-			margin-top: clamp(120px, 16vw, 140px);
-			margin-bottom: 0;
 		}
 
 		.about-section,
