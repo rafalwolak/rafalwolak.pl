@@ -1,0 +1,397 @@
+{
+	"$schema": "https://emdashcms.com/seed.schema.json",
+	"version": "1",
+	"meta": {
+		"name": "Rafal Wolak Portfolio",
+		"description": "Personal portfolio for a senior front end developer focused on commerce frontends.",
+		"author": "Rafal Wolak"
+	},
+	"settings": {
+		"title": "Rafał Wolak",
+		"tagline": "Senior Front End Developer focused on Angular, TypeScript, Magento commerce frontends, and headless CMS architecture."
+	},
+	"collections": [
+		{
+			"slug": "projects",
+			"label": "Projects",
+			"labelSingular": "Project",
+			"supports": ["drafts", "revisions", "search", "seo"],
+			"fields": [
+				{
+					"slug": "title",
+					"label": "Title",
+					"type": "string",
+					"required": true,
+					"searchable": true
+				},
+				{
+					"slug": "featured_image",
+					"label": "Featured Image",
+					"type": "image",
+					"required": true
+				},
+				{
+					"slug": "client",
+					"label": "Client",
+					"type": "string"
+				},
+				{
+					"slug": "year",
+					"label": "Year",
+					"type": "string"
+				},
+				{
+					"slug": "summary",
+					"label": "Summary",
+					"type": "text",
+					"searchable": true
+				},
+				{
+					"slug": "content",
+					"label": "Content",
+					"type": "portableText",
+					"searchable": true
+				},
+				{
+					"slug": "gallery",
+					"label": "Gallery",
+					"type": "json"
+				},
+				{
+					"slug": "url",
+					"label": "Project URL",
+					"type": "string"
+				}
+			]
+		},
+		{
+			"slug": "pages",
+			"label": "Pages",
+			"labelSingular": "Page",
+			"supports": ["drafts", "revisions", "search"],
+			"fields": [
+				{
+					"slug": "title",
+					"label": "Title",
+					"type": "string",
+					"required": true,
+					"searchable": true
+				},
+				{
+					"slug": "content",
+					"label": "Content",
+					"type": "portableText",
+					"searchable": true
+				}
+			]
+		}
+	],
+	"taxonomies": [
+		{
+			"name": "category",
+			"label": "Categories",
+			"labelSingular": "Category",
+			"hierarchical": false,
+			"collections": ["projects"],
+			"terms": [
+				{
+					"slug": "commerce",
+					"label": "Commerce"
+				},
+				{
+					"slug": "frontend-platform",
+					"label": "Frontend Platform"
+				},
+				{
+					"slug": "cms",
+					"label": "CMS"
+				}
+			]
+		},
+		{
+			"name": "tag",
+			"label": "Tags",
+			"labelSingular": "Tag",
+			"hierarchical": false,
+			"collections": ["projects"],
+			"terms": [
+				{
+					"slug": "angular",
+					"label": "Angular"
+				},
+				{
+					"slug": "typescript",
+					"label": "TypeScript"
+				},
+				{
+					"slug": "magento",
+					"label": "Magento"
+				},
+				{
+					"slug": "headless-cms",
+					"label": "Headless CMS"
+				},
+				{
+					"slug": "scss",
+					"label": "SCSS"
+				},
+				{
+					"slug": "wordpress",
+					"label": "WordPress"
+				}
+			]
+		}
+	],
+	"menus": [
+		{
+			"name": "primary",
+			"label": "Primary Navigation",
+			"items": [
+				{
+					"type": "custom",
+					"label": "Home",
+					"url": "/"
+				},
+				{
+					"type": "custom",
+					"label": "Work",
+					"url": "/work"
+				},
+				{
+					"type": "custom",
+					"label": "About",
+					"url": "/about"
+				},
+				{
+					"type": "custom",
+					"label": "Contact",
+					"url": "/contact"
+				}
+			]
+		}
+	],
+	"content": {
+		"pages": [
+			{
+				"id": "about",
+				"slug": "about",
+				"status": "published",
+				"data": {
+					"title": "About",
+					"content": [
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "I am a Senior Front End Developer from Katowice, Poland. I started programming in 2004 with Flash, then moved through HTML, CSS, PHP, WordPress, PrestaShop and OpenCart before focusing on modern SPA front ends.",
+									"_key": "about-1-span"
+								}
+							],
+							"_key": "about-1"
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "Since 2016, my work has centered on large e-commerce front ends for UK and worldwide stores, including Angular-based headless CMS solutions connected to Magento backends.",
+									"_key": "about-2-span"
+								}
+							],
+							"_key": "about-2"
+						}
+					]
+				}
+			}
+		],
+		"projects": [
+			{
+				"id": "oliver-bonas-commerce",
+				"slug": "oliver-bonas-commerce",
+				"status": "published",
+				"data": {
+					"title": "Oliver Bonas",
+					"client": "Tom & Co. Ltd / Oliver Bonas",
+					"year": "2016-Now",
+					"summary": "Frontend work for a high-traffic UK commerce experience built around Angular, TypeScript, SCSS and Magento-backed workflows.",
+					"featured_image": {
+						"$media": {
+							"url": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1200&h=900&fit=crop",
+							"alt": "Commerce interface workspace",
+							"filename": "commerce-interface-workspace.jpg"
+						}
+					},
+					"url": "https://www.oliverbonas.com",
+					"content": [
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "Example project from my Tom & Co. Ltd experience, representing large-scale commerce frontend delivery for major UK stores.",
+									"_key": "oliver-content-1-span"
+								}
+							],
+							"_key": "oliver-content-1"
+						}
+					]
+				},
+				"taxonomies": {
+					"category": ["commerce"],
+					"tag": ["angular", "typescript", "magento", "scss"]
+				}
+			},
+			{
+				"id": "topps-tiles-commerce",
+				"slug": "topps-tiles-commerce",
+				"status": "published",
+				"data": {
+					"title": "Topps Tiles",
+					"client": "Tom & Co. Ltd / Topps Tiles",
+					"year": "2016-Now",
+					"summary": "Commerce frontend delivery for a large retail catalog, focused on reliable UI, content workflows and production-ready responsive implementation.",
+					"featured_image": {
+						"$media": {
+							"url": "https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1200&h=900&fit=crop",
+							"alt": "Frontend production workspace",
+							"filename": "frontend-production-workspace.jpg"
+						}
+					},
+					"url": "https://www.toppstiles.co.uk/",
+					"content": [
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "Example project from my experience building e-commerce websites and front-end systems for large stores.",
+									"_key": "topps-content-1-span"
+								}
+							],
+							"_key": "topps-content-1"
+						}
+					]
+				},
+				"taxonomies": {
+					"category": ["commerce"],
+					"tag": ["angular", "typescript", "magento"]
+				}
+			},
+			{
+				"id": "agent-provocateur-commerce",
+				"slug": "agent-provocateur-commerce",
+				"status": "published",
+				"data": {
+					"title": "Agent Provocateur",
+					"client": "Tom & Co. Ltd / Agent Provocateur",
+					"year": "2016-Now",
+					"summary": "Premium commerce frontend work where interaction quality, responsive behavior and editorial product presentation need to feel precise.",
+					"featured_image": {
+						"$media": {
+							"url": "https://images.unsplash.com/photo-1559028012-481c04fa702d?w=1200&h=900&fit=crop",
+							"alt": "Premium digital interface detail",
+							"filename": "premium-interface-detail.jpg"
+						}
+					},
+					"url": "https://www.agentprovocateur.com/",
+					"content": [
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "Example project from a portfolio of major UK and worldwide stores using modern commerce front-end workflows.",
+									"_key": "ap-content-1-span"
+								}
+							],
+							"_key": "ap-content-1"
+						}
+					]
+				},
+				"taxonomies": {
+					"category": ["commerce"],
+					"tag": ["angular", "typescript", "scss"]
+				}
+			},
+			{
+				"id": "lemieux-commerce",
+				"slug": "lemieux-commerce",
+				"status": "published",
+				"data": {
+					"title": "LeMieux",
+					"client": "Tom & Co. Ltd / LeMieux",
+					"year": "2016-Now",
+					"summary": "Commerce frontend work for an international store, combining Angular UI implementation with content and catalog-facing workflows.",
+					"featured_image": {
+						"$media": {
+							"url": "https://images.unsplash.com/photo-1551434678-e076c223a692?w=1200&h=900&fit=crop",
+							"alt": "Team working on digital product",
+							"filename": "digital-product-team.jpg"
+						}
+					},
+					"url": "https://www.lemieux.com/",
+					"content": [
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "Example project from my long-running e-commerce frontend work with Tom & Co. Ltd.",
+									"_key": "lemieux-content-1-span"
+								}
+							],
+							"_key": "lemieux-content-1"
+						}
+					]
+				},
+				"taxonomies": {
+					"category": ["commerce"],
+					"tag": ["angular", "typescript", "magento"]
+				}
+			},
+			{
+				"id": "angular-headless-cms-platform",
+				"slug": "angular-headless-cms-platform",
+				"status": "published",
+				"data": {
+					"title": "Angular Headless CMS",
+					"client": "Tom & Co. Ltd",
+					"year": "2016-Now",
+					"summary": "Frontend headless CMS solution based on Angular, TypeScript, NodeJS and MongoDB, communicating with Magento backends.",
+					"featured_image": {
+						"$media": {
+							"url": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=900&fit=crop",
+							"alt": "Architecture and analytics on a laptop",
+							"filename": "headless-cms-architecture.jpg"
+						}
+					},
+					"content": [
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "A core part of my current work: creating a front-end Headless CMS based on Angular that communicates with Magento on the backend.",
+									"_key": "cms-content-1-span"
+								}
+							],
+							"_key": "cms-content-1"
+						}
+					]
+				},
+				"taxonomies": {
+					"category": ["frontend-platform", "cms"],
+					"tag": ["angular", "typescript", "headless-cms", "magento"]
+				}
+			}
+		]
+	}
+}

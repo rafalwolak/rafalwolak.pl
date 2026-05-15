@@ -1,0 +1,84 @@
+---
+import { getMenu, getSiteSettings } from "emdash";
+import { createPublicPageContext } from "emdash/page";
+import { EmDashHead } from "emdash/ui";
+import "../styles/theme.css";
+
+interface Props {
+	title?: string;
+	description?: string;
+	image?: string;
+	type?: "website" | "article";
+	chrome?: boolean;
+}
+
+const {
+	title,
+	description,
+	image,
+	type = "website",
+	chrome = true,
+} = Astro.props;
+const settings = await getSiteSettings();
+const siteTitle = settings?.title || "Rafał Wolak";
+const fullTitle = title ? `${title} | ${siteTitle}` : siteTitle;
+const siteDescription =
+	description ||
+	settings?.tagline ||
+	"Senior Front End Developer focused on Angular, TypeScript, Magento commerce frontends, and headless CMS architecture.";
+const menu = await getMenu("primary");
+
+const pageCtx = createPublicPageContext({
+	Astro,
+	kind: "custom",
+	pageType: type,
+	title: fullTitle,
+	pageTitle: title ?? siteTitle,
+	description: siteDescription,
+	canonical: Astro.url.href,
+	image,
+	seo: { ogImage: image },
+	siteName: siteTitle,
+});
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>{fullTitle}</title>
+		<EmDashHead page={pageCtx} />
+	</head>
+	<body>
+		{
+			chrome && (
+				<header class="site-shell-header" aria-label="Primary navigation">
+					<a class="site-shell-brand" href="/">
+						Rafal Wolak <span aria-hidden="true">.</span>
+					</a>
+					<nav class="site-shell-nav" aria-label="Site sections">
+						{menu?.items.map((item) => (
+							<a href={item.url} target={item.target}>
+								{item.label}
+							</a>
+						))}
+					</nav>
+				</header>
+			)
+		}
+
+		<main class:list={["site-main", { "site-main--bare": !chrome }]}>
+			<slot />
+		</main>
+
+		{
+			chrome && (
+				<footer class="site-shell-footer">
+					<a href="mailto:kontakt@rafalwolak.pl">kontakt@rafalwolak.pl</a>
+					<span>Astro + Cloudflare + EmDash CMS</span>
+				</footer>
+			)
+		}
+	</body>
+</html>
