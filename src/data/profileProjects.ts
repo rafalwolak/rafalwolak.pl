@@ -11,6 +11,15 @@ export interface ProfileProject {
 
 export const profileProjects: ProfileProject[] = [
 	{
+		title: "Remind Tools",
+		client: "Rafal Wolak / DESIGN4PRO",
+		year: "2026",
+		summary:
+			"Recently released iOS productivity app for birthdays, anniversaries, name days and personal dates, with widgets, contact imports and local notifications.",
+		url: "https://apps.apple.com/us/app/remind-tools/id6766576395",
+		tags: ["SwiftUI", "WidgetKit", "Core Data", "App Store"],
+	},
+	{
 		title: "Oliver Bonas",
 		client: "Tom & Co. Ltd / Oliver Bonas",
 		year: "2016-Now",
