@@ -138,6 +138,22 @@
 				{
 					"slug": "wordpress",
 					"label": "WordPress"
+				},
+				{
+					"slug": "swiftui",
+					"label": "SwiftUI"
+				},
+				{
+					"slug": "widgetkit",
+					"label": "WidgetKit"
+				},
+				{
+					"slug": "core-data",
+					"label": "Core Data"
+				},
+				{
+					"slug": "app-store",
+					"label": "App Store"
 				}
 			]
 		}
@@ -218,11 +234,13 @@
 					"year": "2016-Now",
 					"summary": "Frontend work for a high-traffic UK commerce experience built around Angular, TypeScript, SCSS and Magento-backed workflows.",
 					"featured_image": {
-						"$media": {
-							"url": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1200&h=900&fit=crop",
-							"alt": "Commerce interface workspace",
-							"filename": "commerce-interface-workspace.jpg"
-						}
+						"id": "oliver-bonas-screenshot",
+						"src": "/assets/oliver-bonas-screenshot.png",
+						"alt": "Oliver Bonas homepage screenshot.",
+						"filename": "oliver-bonas-screenshot.png",
+						"mimeType": "image/png",
+						"width": 810,
+						"height": 810
 					},
 					"url": "https://www.oliverbonas.com",
 					"content": [
@@ -255,11 +273,13 @@
 					"year": "2016-Now",
 					"summary": "Commerce frontend delivery for a large retail catalog, focused on reliable UI, content workflows and production-ready responsive implementation.",
 					"featured_image": {
-						"$media": {
-							"url": "https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1200&h=900&fit=crop",
-							"alt": "Frontend production workspace",
-							"filename": "frontend-production-workspace.jpg"
-						}
+						"id": "topps-tiles-screenshot",
+						"src": "/assets/topps-tiles-screenshot.png",
+						"alt": "Topps Tiles homepage screenshot.",
+						"filename": "topps-tiles-screenshot.png",
+						"mimeType": "image/png",
+						"width": 810,
+						"height": 810
 					},
 					"url": "https://www.toppstiles.co.uk/",
 					"content": [
@@ -292,11 +312,13 @@
 					"year": "2016-Now",
 					"summary": "Premium commerce frontend work where interaction quality, responsive behavior and editorial product presentation need to feel precise.",
 					"featured_image": {
-						"$media": {
-							"url": "https://images.unsplash.com/photo-1559028012-481c04fa702d?w=1200&h=900&fit=crop",
-							"alt": "Premium digital interface detail",
-							"filename": "premium-interface-detail.jpg"
-						}
+						"id": "agent-provocateur-screenshot",
+						"src": "/assets/agent-provocateur-screenshot.png",
+						"alt": "Agent Provocateur homepage screenshot.",
+						"filename": "agent-provocateur-screenshot.png",
+						"mimeType": "image/png",
+						"width": 810,
+						"height": 810
 					},
 					"url": "https://www.agentprovocateur.com/",
 					"content": [
@@ -329,11 +351,13 @@
 					"year": "2016-Now",
 					"summary": "Commerce frontend work for an international store, combining Angular UI implementation with content and catalog-facing workflows.",
 					"featured_image": {
-						"$media": {
-							"url": "https://images.unsplash.com/photo-1551434678-e076c223a692?w=1200&h=900&fit=crop",
-							"alt": "Team working on digital product",
-							"filename": "digital-product-team.jpg"
-						}
+						"id": "lemieux-screenshot",
+						"src": "/assets/lemieux-screenshot.png",
+						"alt": "LeMieux homepage screenshot.",
+						"filename": "lemieux-screenshot.png",
+						"mimeType": "image/png",
+						"width": 810,
+						"height": 810
 					},
 					"url": "https://www.lemieux.com/",
 					"content": [
@@ -366,11 +390,13 @@
 					"year": "2016-Now",
 					"summary": "Frontend headless CMS solution based on Angular, TypeScript, NodeJS and MongoDB, communicating with Magento backends.",
 					"featured_image": {
-						"$media": {
-							"url": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=900&fit=crop",
-							"alt": "Architecture and analytics on a laptop",
-							"filename": "headless-cms-architecture.jpg"
-						}
+						"id": "angular-logo",
+						"src": "/assets/angular-logo.png",
+						"alt": "Official Angular logo.",
+						"filename": "angular-logo.png",
+						"mimeType": "image/png",
+						"width": 1920,
+						"height": 1920
 					},
 					"content": [
 						{
@@ -390,6 +416,57 @@
 				"taxonomies": {
 					"category": ["frontend-platform", "cms"],
 					"tag": ["angular", "typescript", "headless-cms", "magento"]
+				}
+			},
+			{
+				"id": "remind-tools-ios-app",
+				"slug": "remind-tools-ios-app",
+				"status": "published",
+				"data": {
+					"title": "Remind Tools",
+					"client": "Rafal Wolak / DESIGN4PRO",
+					"year": "2026",
+					"summary": "Recently released iOS productivity app for birthdays, anniversaries, name days and personal dates, with widgets, contact imports and local notifications.",
+					"featured_image": {
+						"id": "remind-tools-app-store",
+						"src": "/assets/remind-tools-app-store.png",
+						"alt": "Remind Tools App Store launch artwork.",
+						"filename": "remind-tools-app-store.png",
+						"mimeType": "image/png",
+						"width": 1090,
+						"height": 1090
+					},
+					"url": "https://apps.apple.com/us/app/remind-tools/id6766576395",
+					"content": [
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "Remind Tools is my newly released iOS app for keeping birthdays, anniversaries, name days and custom personal dates under control. It combines SwiftUI, Core Data, WidgetKit, contact imports, local notifications and a one-time Premium unlock into a focused personal utility.",
+									"_key": "remind-tools-content-1-span"
+								}
+							],
+							"_key": "remind-tools-content-1"
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "The release is available now on the App Store.",
+									"_key": "remind-tools-content-2-span"
+								}
+							],
+							"_key": "remind-tools-content-2"
+						}
+					]
+				},
+				"taxonomies": {
+					"category": ["frontend-platform"],
+					"tag": ["swiftui", "widgetkit", "core-data", "app-store"]
 				}
 			}
 		]
